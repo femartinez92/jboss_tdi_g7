@@ -30,7 +30,6 @@ public class ApplicationConfig extends Application {
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
         resources.add(cl.chiri.ing.puc.integra7v2.BancoResource.class);
-        resources.add(cl.chiri.ing.puc.integra7v2.Factura.class);
         resources.add(cl.chiri.ing.puc.integra7v2.FacturasResource.class);
         resources.add(cl.chiri.ing.puc.integra7v2.OrdenCompra.class);
         resources.add(cl.chiri.ing.puc.integra7v2.OrdenesCompraResource.class);

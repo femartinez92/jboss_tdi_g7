@@ -26,15 +26,16 @@ public class Factura {
     private String id;
     private Date fecha_creacion;
     private String proveedor;
-    private String  cliente;
+    private String cliente;
     private int valor_bruto;
     private int iva;
     private int valor_total;
-    private String  estado_pago;
-    private Date  fecha_pago;
-    private String  id_orden_compra;
+    private String estado_pago;
+    private Date fecha_pago;
+    private String id_orden_compra;
     private String motivo_rechazo;
-    private String  motivo_anulacion;
+    private String motivo_anulacion;
+
     /**
      * Creates a new instance of Factura
      */
@@ -55,7 +56,9 @@ public class Factura {
     }
 
     /**
-     * Retrieves representation of an instance of cl.chiri.ing.puc.integra7v2.Factura
+     * Retrieves representation of an instance of
+     * cl.chiri.ing.puc.integra7v2.Factura
+     *
      * @param id
      * @return an instance of java.lang.String
      * @throws java.lang.Exception
@@ -64,30 +67,29 @@ public class Factura {
     @Produces("application/json")
     public Response obtener_factura(String id) throws Exception {
         ClientRequest request;
-        request = new ClientRequest("http://localhost:85/"+id);
+        request = new ClientRequest("http://localhost:85/" + id);
         request.header("Content-Type", "application/json");
         Response res;
         res = request.get(String.class);
         return res;
     }
 
-    
     @POST
     @Consumes("application/json")
     @Produces("application/json")
-    public Response pay_invoice(String id) throws Exception{
+    public Response pay_invoice(String id) throws Exception {
         ClientRequest request;
         request = new ClientRequest("http://localhost:85/pay");
         request.header("Content-Type", "application/json");
         request.accept("application/json");
-        String input = "{\"id\":\""+id+"\"}";
-        request.body(MediaType.APPLICATION_JSON,input);
+        String input = "{\"id\":\"" + id + "\"}";
+        request.body(MediaType.APPLICATION_JSON, input);
         Response res;
         res = request.post(String.class);
         return res;
-        
+
     }
-    
+
     /**
      *
      * @param id_factura
@@ -103,14 +105,13 @@ public class Factura {
         request.header("Content-Type", "application/json");
         request.accept("application/json");
         String input;
-        input = "{\"id\":\""+id_factura+"\",\"motivo\":\""+motivo+"\"}";
-        request.body(MediaType.APPLICATION_JSON,input);
+        input = "{\"id\":\"" + id_factura + "\",\"motivo\":\"" + motivo + "\"}";
+        request.body(MediaType.APPLICATION_JSON, input);
         Response res;
         res = request.post(String.class);
         return res;
     }
-    
-    
+
     @Produces("application/json")
     public Response cancel_invoice(String id_factura, String motivo) throws Exception {
         ClientRequest request;
@@ -118,18 +119,18 @@ public class Factura {
         request.header("Content-Type", "application/json");
         request.accept("application/json");
         String input;
-        input = "{\"id\":\""+id_factura+"\",\"motivo\":\""+motivo+"\"}";
-        request.body(MediaType.APPLICATION_JSON,input);
+        input = "{\"id\":\"" + id_factura + "\",\"motivo\":\"" + motivo + "\"}";
+        request.body(MediaType.APPLICATION_JSON, input);
         Response res;
         res = request.post(String.class);
         return res;
     }
-    
-    
+
     /**
      * PUT method for updating or creating an instance of Factura
+     *
      * @param orden_compra_id
-     * @return 
+     * @return
      * @throws java.lang.Exception
      */
     @PUT
@@ -142,10 +143,23 @@ public class Factura {
         request.header("Content-Type", "application/json");
         request.accept("application/json");
 
-        String input = "{\"oc\":\""+orden_compra_id+"\"}";
+        String input = "{\"oc\":\"" + orden_compra_id + "\"}";
         request.body(MediaType.APPLICATION_JSON, input);
         res = request.put(String.class);
-        return res; 
+        return res;
+    }
+
+    public Response boleta(String proveedor_id, String cliente_id, int total) throws Exception {
+        ClientRequest request;
+        request = new ClientRequest("http://localhost:85/boleta");
+        Response res;
+        request.header("Content-Type", "application/json");
+        request.accept("application/json");
+
+        String input = "{\"proveedor\":\"" + proveedor_id + "\",\"cliente\":\"" + cliente_id + "\",\"total\":" + total + "}";
+        request.body(MediaType.APPLICATION_JSON, input);
+        res = request.put(String.class);
+        return res;
     }
 
     /**
@@ -251,6 +265,4 @@ public class Factura {
         this.motivo_anulacion = motivo_anulacion;
     }
 
-    
-    
 }

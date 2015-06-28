@@ -17,8 +17,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="eRROR_CODE" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="httpCode" type="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="eRROR_CODE" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="description" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
@@ -30,42 +30,18 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Error", propOrder = {
-    "errorcode",
     "httpCode",
+    "errorcode",
     "description"
 })
 public class Error {
 
-    @XmlElement(name = "eRROR_CODE", required = true, type = Integer.class, nillable = true)
-    protected Integer errorcode;
     @XmlElement(required = true, type = Integer.class, nillable = true)
     protected Integer httpCode;
+    @XmlElement(name = "eRROR_CODE", required = true, type = Integer.class, nillable = true)
+    protected Integer errorcode;
     @XmlElement(required = true, nillable = true)
     protected String description;
-
-    /**
-     * Gets the value of the errorcode property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Integer }
-     *     
-     */
-    public Integer getERRORCODE() {
-        return errorcode;
-    }
-
-    /**
-     * Sets the value of the errorcode property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Integer }
-     *     
-     */
-    public void setERRORCODE(Integer value) {
-        this.errorcode = value;
-    }
 
     /**
      * Gets the value of the httpCode property.
@@ -89,6 +65,30 @@ public class Error {
      */
     public void setHttpCode(Integer value) {
         this.httpCode = value;
+    }
+
+    /**
+     * Gets the value of the errorcode property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Integer }
+     *     
+     */
+    public Integer getERRORCODE() {
+        return errorcode;
+    }
+
+    /**
+     * Sets the value of the errorcode property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Integer }
+     *     
+     */
+    public void setERRORCODE(Integer value) {
+        this.errorcode = value;
     }
 
     /**
