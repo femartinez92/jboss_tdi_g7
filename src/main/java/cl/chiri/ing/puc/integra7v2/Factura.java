@@ -151,7 +151,7 @@ public class Factura {
 
     public Response boleta(String proveedor_id, String cliente_id, int total) throws Exception {
         ClientRequest request;
-        request = new ClientRequest("http://localhost:85/boleta");
+        request = new ClientRequest("http://localhost:85/boleta/");
         Response res;
         request.header("Content-Type", "application/json");
         request.accept("application/json");

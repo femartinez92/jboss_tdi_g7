@@ -28,8 +28,8 @@ public interface Cuenta {
      * @param id
      * @return
      *     returns cl.uc.integracion.banco.servicios.CuentaBancoArray
-     * @throws BadParametersException
      * @throws ErrorException
+     * @throws BadParametersException
      */
     @WebMethod
     @WebResult(partName = "return")
@@ -44,8 +44,8 @@ public interface Cuenta {
      * @param cartola
      * @return
      *     returns cl.uc.integracion.banco.servicios.Cartola
-     * @throws BadParametersException
      * @throws ErrorException
+     * @throws BadParametersException
      */
     @WebMethod
     @WebResult(partName = "return")

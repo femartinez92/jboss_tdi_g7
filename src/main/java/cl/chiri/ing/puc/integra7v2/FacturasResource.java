@@ -114,9 +114,9 @@ public class FacturasResource {
     @Consumes("application/json")
     @Produces("application/json")
     @Path("/boleta")
-    public Response boleta(@QueryParam("proveedor_id") String proveedor_id, @QueryParam("cliente_id") String cliente_id, @QueryParam("total") int total) throws Exception {
+    public Response boleta(@QueryParam("proveedor_id") String proveedor_id, @QueryParam("cliente_id") String cliente_id, @QueryParam("total") String total) throws Exception {
         Factura fac = new Factura();
-        return fac.boleta(proveedor_id, cliente_id, total);
+        return fac.boleta(proveedor_id, cliente_id, Integer.parseInt(total));
     }
     /**
      * Sub-resource locator method for {id}
