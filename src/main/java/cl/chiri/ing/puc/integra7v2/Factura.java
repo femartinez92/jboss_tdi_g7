@@ -147,6 +147,19 @@ public class Factura {
         res = request.put(String.class);
         return res; 
     }
+    
+        public Response boleta(String proveedor_id, String cliente_id, int total) throws Exception {
+        ClientRequest request;
+        request = new ClientRequest("http://localhost:85/boleta/");
+        Response res;
+        request.header("Content-Type", "application/json");
+        request.accept("application/json");
+
+        String input = "{\"proveedor\":\"" + proveedor_id + "\",\"cliente\":\"" + cliente_id + "\",\"total\":" + total + "}";
+        request.body(MediaType.APPLICATION_JSON, input);
+        res = request.put(String.class);
+        return res;
+    }
 
     /**
      * DELETE method for resource Factura
